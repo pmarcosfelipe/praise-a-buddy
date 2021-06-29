@@ -6,6 +6,7 @@ import { CreateUserController } from './controllers/CreateUserController';
 import { ListComplimetsReceivedByUserController } from './controllers/ListComplimetsReceivedByUserController';
 import { ListComplimetsSentByUserController } from './controllers/ListComplimetsSentByUserController';
 import { ListTagsController } from './controllers/ListTagsController';
+import { ListUsersController } from './controllers/ListUsersController';
 
 import { verifyIsAdmin } from './middlewares/verifyIsAdmin';
 import { verifyIsAuthenticated } from './middlewares/verifyIsAuthenticated';
@@ -22,6 +23,7 @@ const listComplimetsSentByUserController =
 const listComplimetsReceivedByUserController =
   new ListComplimetsReceivedByUserController();
 const listTagsController = new ListTagsController();
+const listUsersController = new ListUsersController();
 
 router.post('/users', createUserController.handle);
 router.post(
@@ -48,5 +50,6 @@ router.get(
   listComplimetsReceivedByUserController.handle
 );
 router.get('/tags', verifyIsAuthenticated, listTagsController.handle);
+router.get('/users', verifyIsAuthenticated, listUsersController.handle);
 
 export { router };
