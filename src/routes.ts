@@ -47,6 +47,6 @@ router.get(
   verifyIsAuthenticated,
   listComplimetsReceivedByUserController.handle
 );
-router.get('/tags', listTagsController.handle);
+router.get('/tags', verifyIsAuthenticated, listTagsController.handle);
 
 export { router };
