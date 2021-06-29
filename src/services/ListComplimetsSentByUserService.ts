@@ -7,6 +7,7 @@ class ListComplimetsSentByUserService {
 
     const compliments = await complimentsRepository.find({
       where: { user_sender: user_id },
+      relations: ['userSender', 'userReceiver', 'tag'],
     });
 
     return compliments;
